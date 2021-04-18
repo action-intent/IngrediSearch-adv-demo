@@ -1,0 +1,36 @@
+<resources>
+  <string name="app_name">SamsungSearch</string>
+
+  <!--  drawers & main -->
+  <string name="main_title">IngrediSearch Demo</string>
+  <string name="drawer_header_image_content_description">Samsung Ingredient Search</string>
+  <string name="drawer_search_title">Ingredient Search</string>
+  <string name="search">Search</string>
+  <string name="favorites">Favorites</string>
+  <string name="home">Home</string>
+
+  <!-- search -->
+  <string name="search_title">Search for ingredients</string>
+  <string name="search_header">Enter the ingredients</string>
+  <string name="search_hint">eggs, chocolate, cheese</string>
+  <string name="search_query_required">Please, input one or more ingredients!</string>
+
+  <!-- search details list -->
+  <string name="results_title">Results</string>
+  <string name="noresults">No results for your query</string>
+  <string name="error">An error occurred</string>
+  <string name="retry">Retry</string>
+
+  <!-- favorites -->
+  <string name="favorites_title">Favorites</string>
+  <string name="nofavorites">No favorites yet</string>
+  <string name="add_remove_favorite">Add or remove favorite</string>
+
+  <!-- recipe details -->
+  <string name="recipe_title">Recipe</string>
+  <string name="recipe_image">Recipe image</string>
+  <string name="ingredients">Ingredients</string>
+  <string name="score">100</string>
+
+  <string name="loading">Loading&#8230;</string>
+</resources>
