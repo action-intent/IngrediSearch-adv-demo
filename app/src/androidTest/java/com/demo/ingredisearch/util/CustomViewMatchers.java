@@ -1,16 +1,66 @@
 package com.demo.ingredisearch.util;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.view.View;
 
 import androidx.annotation.IdRes;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.test.core.app.ApplicationProvider;
+import androidx.test.espresso.matcher.BoundedMatcher;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
 
+import static org.hamcrest.Matchers.is;
+
 public interface CustomViewMatchers {
+
+    static Matcher<View> withToolbarTitle(@IdRes int titleId) {
+        Context context = ApplicationProvider.getApplicationContext();
+        return withToolbarTitle(context.getString(titleId));
+    }
+
+    static Matcher<View> withToolbarTitle(String title) {
+        return withToolbarTitle(is(title));
+    }
+
+//    static Matcher<View> withToolbarTitle(Matcher<CharSequence> matcher) {
+//        return new TypeSafeMatcher<View>() {
+//            @Override
+//            protected boolean matchesSafely(View view) {
+//                Toolbar toolbar;
+//                if (view instanceof Toolbar) {
+//                    toolbar = (Toolbar) view;
+//                    return matcher.matches(toolbar.getTitle().toString());
+//                }
+//                return false;
+//            }
+//
+//            @Override
+//            public void describeTo(Description description) {
+//                description.appendText("with toolbar title: ");
+//                matcher.describeTo(description);
+//            }
+//        };
+//    }
+
+    static Matcher<View> withToolbarTitle(Matcher<CharSequence> matcher) {
+        return new BoundedMatcher<View, Toolbar>(Toolbar.class) {
+            @Override
+            protected boolean matchesSafely(Toolbar view) {
+                return matcher.matches(view.getTitle().toString());
+            }
+
+            @Override
+            public void describeTo(Description description) {
+                description.appendText("with toolbar title: ");
+                matcher.describeTo(description);
+            }
+        };
+    }
 
     static RecyclerViewMatcher withRecyclerView(@IdRes final int recyclerViewId) {
         return new RecyclerViewMatcher(recyclerViewId);
